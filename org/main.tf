@@ -5,6 +5,7 @@ terraform {
     bucket       = "tfstate-091512051921-ap-northeast-1-an"
     key          = "terraform.tfstate"
     region       = "ap-northeast-1"
+    profile      = "org"
     encrypt      = true
     use_lockfile = true
   }
@@ -18,5 +19,6 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-northeast-1"
+  region  = "ap-northeast-1"
+  profile = "org"
 }
