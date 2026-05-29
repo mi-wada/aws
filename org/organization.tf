@@ -32,3 +32,20 @@ resource "aws_organizations_account" "prod_hoge" {
   email     = var.prod_hoge_email
   parent_id = aws_organizations_organizational_unit.prod.id
 }
+
+resource "aws_organizations_organizational_unit" "test" {
+  name      = "Test"
+  parent_id = aws_organizations_organizational_unit.workloads.id
+}
+
+variable "test_hoge_email" {
+  type        = string
+  description = "The email address of TEST-HOGE root account"
+  sensitive   = true
+}
+
+resource "aws_organizations_account" "test_hoge" {
+  name      = "test-hoge"
+  email     = var.test_hoge_email
+  parent_id = aws_organizations_organizational_unit.test.id
+}
